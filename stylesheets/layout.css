@@ -48,6 +48,8 @@ a:visited {
 .framed {
   padding: 5px;
   border: 1px solid #000;
+  max-width: 100%;
+  height: auto;
 }
 
 .btn {
