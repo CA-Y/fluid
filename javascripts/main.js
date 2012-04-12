@@ -1,18 +1,20 @@
 (function (window) {
   $(function(){
-    var visible = false;
     var showGuide = $('#show-guide');
     var guide = $('#guide');
-    showGuide.click(function(){
+    var clickHandler = function(){
+      var visible = guide.css('display') == 'block';
       if (visible)
-        guide.hide();
+        guide.css('display', 'none')
       else
-        guide.show();
-      visible = !visible;
-      showGuide.text(visible ? 'Hide Guide' : 'Show Guide');
-      if (visible)
-        window.location.hash = 'guide';
+        guide.css('display', 'block')
+      showGuide.text(!visible ? 'Hide Guide' : 'Show Guide');
+      if (!visible)
+        window.location.hash = '#guide';
       return false;
-    });
+    };
+    showGuide.click(clickHandler);
+    if (window.location.hash == '#guide')
+      clickHandler();
   });
 })(window)
